@@ -1,0 +1,9 @@
+[Unit]
+Description=Monthly Backup of Miniflux DB on DigitalOcean droplet
+
+[Timer]
+OnCalendar=weekly
+Persistent=true
+
+[Install]
+WantedBy=timers.target

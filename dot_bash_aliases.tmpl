@@ -1,0 +1,84 @@
+# enable color support of ls and also add handy aliases
+if [ -x /usr/bin/dircolors ]; then
+    test -r ~/.dircolors && eval "$(dircolors -b ~/.dircolors)" || eval "$(dircolors -b)"
+    alias ls='ls --color=auto'
+    #alias dir='dir --color=auto'
+    #alias vdir='vdir --color=auto'
+
+    alias grep='grep --color=auto'
+    alias fgrep='fgrep --color=auto'
+    alias egrep='egrep --color=auto'
+fi
+
+# colored GCC warnings and errors
+#export GCC_COLORS='error=01;31:warning=01;35:note=01;36:caret=01;32:locus=01:quote=01'
+
+# some more ls aliases
+if command -v eza &> /dev/null; then
+    alias ezaa='eza -l'
+    alias ezah='eza -lh'
+    alias ls='eza --color=automatic'
+    alias ll='eza --all --long --group --classify'
+    alias ltr='eza --all --long --sort newest'
+else
+    alias ll='ls -alF'
+    alias ltr='ls -ltr'
+fi
+
+# truncate long lines, quit on ^C
+alias less='less -i -S -K'
+
+# Copy/paste
+alias pbcopy='xclip -selection clipboard'
+alias pbpaste='xclip -selection clipboard -o'
+
+# SystemD aliases
+alias running_services='sudo systemctl list-units --type=service --state=running'
+alias user_services='systemctl --user list-units'
+
+# Add an "alert" alias for long running commands.  Use like so:
+#   sleep 10; alert
+alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo error)" "$(history|tail -n1|sed -e '\''s/^\s*[0-9]\+\s*//;s/[;&|]\s*alert$//'\'')"'
+
+# Silver Searcher
+# -F: page the output if the output is longer than the screen
+# -R: display raw control chars for colored output
+alias ag='ag --pager="less -RF"'
+# Ignore pytest test files in the search
+alias agnpt='ag -G "^(?!.*test).*$"'
+
+# fzf
+alias fzopen='fd -t f . . -0 | fzf --read0 --print0 | xargs -0 -r open'
+alias ff="fzf --preview 'batcat --style=numbers --color=always {}'"
+
+
+alias docker-compose='docker compose'
+
+# Show tldr pages in english
+alias tldr='LANG=en tldr'
+
+{{ if not .workComputer }}
+alias ssh-retropie='TERM=xterm-256color ssh pi@retropie'
+{{ end }}
+
+empty_line_before_eof()
+{
+    # Insert a newline after the last line if it's not empty.
+    # Note that this means that the empty file will *not* be changed (it
+    # already ends with an empty line).
+    #
+    # @param $1...: Sed options and/or input files
+    #
+    # Example:
+    # $ empty_line_before_eof -i .bak *
+    #   Save backups to filename.bak, and process each file
+    #
+    # Command breakdown:
+    # '.' denotes any character *except* newline
+    # '$' denotes the end of file
+    # 'a\' appends the following text (which is nothing, in this case) on a new line
+    # In other words, if the last line contains a character that is not newline,
+    # append a newline.
+
+    sed -e '/.$/a\' "$@"
+}

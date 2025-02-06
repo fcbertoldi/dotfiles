@@ -1,0 +1,10 @@
+[Unit]
+Description=JupyterLab Server
+
+[Service]
+Type=simple
+ExecStart=%h/.local/bin/jupyter-lab 
+Restart=on-failure
+
+[Install]
+WantedBy=multi-user.target

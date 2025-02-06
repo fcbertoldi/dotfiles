@@ -1,0 +1,3 @@
+{{ if eq .chezmoi.hostname .desktopHostname }}
+{{- template "backup_rsync_excludes_desktop.conf" . -}}
+{{ end }}

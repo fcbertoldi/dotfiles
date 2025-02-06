@@ -1,0 +1,9 @@
+[Unit]
+Description=Daily sync from the remote Google Drive root folder to the local GDrive folder.
+
+[Timer]
+OnCalendar=daily
+Persistent=true
+
+[Install]
+WantedBy=timers.target

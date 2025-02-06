@@ -1,0 +1,11 @@
+[Unit]
+Description=Rotate backup files
+Documentation=https://rotate-backups.readthedocs.io/en/latest/readme.html
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h
+ExecStart=%h/.local/bin/rotate-backups --prefer-recent
+
+[Install]
+WantedBy=default.target

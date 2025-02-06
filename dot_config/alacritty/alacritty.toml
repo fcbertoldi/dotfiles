@@ -1,0 +1,23 @@
+import = [
+    "~/.config/alacritty/current-theme.toml", # symlink to a theme file:  https://github.com/alacritty/alacritty-theme
+]
+
+[font.bold]
+family = "monospace"
+style = "Bold"
+
+[font.bold_italic]
+family = "monospace"
+style = "Bold Italic"
+
+[font.italic]
+family = "monospace"
+style = "Italic"
+
+[font.normal]
+family = "monospace"
+
+[window]
+decorations = "none"
+startup_mode = "Maximized"
+padding.y = 1

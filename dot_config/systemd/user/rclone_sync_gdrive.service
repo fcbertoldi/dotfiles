@@ -1,0 +1,13 @@
+[Unit]
+Description=Sync of the remote Google Drive root folder to thep local GDrive folder
+After=network-online.target nss-lookup.target
+StartLimitInterval=0
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h
+ExecStart=rclone sync gdrive: %h/GDrive
+
+[Install]
+WantedBy=default.target

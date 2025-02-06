@@ -1,0 +1,5 @@
+[Desktop Entry]
+Name=Emacs Client for Org Files
+Exec=emacsclient %F
+Type=Application
+MimeType=text/org

@@ -1,0 +1,13 @@
+[Unit]
+Description=LanguageTool server
+Wants=network-online.target
+After=network-online.target
+
+[Service]
+Type=simple
+WorkingDirectory=/opt/LanguageTool
+ExecStart=java -Xmx512M -cp /opt/LanguageTool/languagetool-server.jar org.languagetool.server.HTTPServer --port 8081 --allow-origin
+
+[Install]
+WantedBy=default.target
+

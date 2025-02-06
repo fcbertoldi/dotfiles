@@ -1,0 +1,11 @@
+;; Create journal entry
+(defun my/org-journal-entry () 
+  (interactive) 
+  (let ((cur-entry-path (concat "~/Documents/org-files/journal/" (format-time-string "%Y-%m-%d")
+				".org"))) 
+    (if (not (file-exists-p cur-entry-path)) 
+	(let ((timestamp (format-time-string "[%Y-%m-%d %a]"))) 
+	  (find-file cur-entry-path) 
+	  (insert "#+DATE: " timestamp "\n\n") 
+	  (save-buffer)) 
+      (find-file cur-entry-path))))

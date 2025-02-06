@@ -1,0 +1,14 @@
+[Unit]
+Description=Copy Grocy backup to local backup directory.
+After=network.target
+
+[Service]
+Type=oneshot
+Environment="BACKUP_HOST={{ .systemdSvcBackupUser }}@{{ .systemdSvcBackupHost }}"
+Environment="SRC_BACKUP_DIR=/var/local/grocy/backups"
+Environment="BACKUP_FILE=backup-grocy.latest.tar.gz"
+Environment="TARGET_BACKUP_DIR={{ env "HOME" }}/backups/Grocy"
+ExecStart=/bin/sh -c "scp ${BACKUP_HOST}:${SRC_BACKUP_DIR}/${BACKUP_FILE} ${TARGET_BACKUP_DIR}"
+
+[Install]
+WantedBy=default.target

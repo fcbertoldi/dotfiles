@@ -1,0 +1,8 @@
+default_context:
+    full_name: "{{ .fullname }}"
+    email: "{{ .email }}"
+    github_username: "fcbertoldi"
+cookiecutters_dir: "~/.cookiecutters/"
+abbreviations:
+  drf_simple: git+ssh://git@github.com/fcbertoldi/cookiecutter-drf-simple.git
+  gt: git+ssh://git@{{ .giteaHostname }}:2222/{{ .username }}/{0}.git

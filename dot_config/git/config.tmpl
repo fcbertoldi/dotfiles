@@ -1,0 +1,36 @@
+[alias]
+	ss = status --short
+	ci-reuse-msg = commit --reuse-message=HEAD
+	ci = commit
+	cc = conventionalcommit
+	br = branch
+	sw = switch
+	ll = log --oneline
+	irb = interactive-rebase-branch
+	squash-all = "!f(){ git reset $(git commit-tree HEAD^{tree} -m 'New first commit');};f"
+
+[user]
+	name = {{ .fullname }}
+	email = {{ .email }}
+
+[core]
+	editor = emacsclient -t
+	pager = delta
+
+[delta]
+	navigate = true    # use n and N to move between diff sections
+
+[merge]
+	conflictstyle = diff3
+
+[diff]
+	colorMoved = default
+
+[init]
+	defaultBranch = master
+
+[pull]
+	rebase = true
+
+[commit]
+	gpgsign = false

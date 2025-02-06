@@ -1,0 +1,15 @@
+[Unit]
+Description=Gollum Git-Powered Wiki
+Documentation=https://github.com/gollum/gollum
+Wants=graphical.target
+After=graphical.target
+
+[Service]
+Type=simple
+ExecStart=%h/.asdf/shims/gollum -h localhost -p 4567
+WorkingDirectory=%h/Documents/personalwiki
+Restart=on-failure
+RestartSec=10
+
+[Install]
+WantedBy=default.target

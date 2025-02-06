@@ -1,0 +1,31 @@
+**/*~
+README.md
+todo.org
+
+# ignore the following SystemD service files
+#.config/systemd/user/backup_miniflux.service
+.config/systemd/user/rclone_bisync_gdrive.service
+.config/systemd/user/rclone_bisync_gdrive.timer
+.config/systemd/user/rotate_backups.service
+.config/systemd/user/rotate_backups.timer
+
+.gmailctl/credentials.json
+.config/gmailctl/credentials.json
+
+{{- if ne .chezmoi.os "linux" }}
+.config/
+.local/
+.ssh/
+.cookiecutterrc
+{{- end }}
+{{- if ne .chezmoi.os "windows" }}
+AppData/
+{{- end }}
+{{ if ne .chezmoi.hostname "fernando-desktop" }}
+.config/ansible-playbooks/
+.config/backup_rsync_linux_excludes.conf
+.config/systemd/user/gitea_copy_backup.*
+.config/systemd/user/grocy_copy_backup.*
+.config/systemd/user/linkding_copy_backup.*
+.config/systemd/user/backup_miniflux.*
+{{ end }}

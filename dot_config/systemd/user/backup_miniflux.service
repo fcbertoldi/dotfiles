@@ -1,0 +1,16 @@
+[Unit]
+Description=Backup Miniflux DB in the DigitalOcean droplet
+After=network-online.target nss-lookup.target
+StartLimitInterval=0
+StartLimitBurst=3
+
+[Service]
+Type=oneshot
+WorkingDirectory=%h
+EnvironmentFile=%h/.config/backup_miniflux_db.conf
+ExecStart=%h/src/Personal/scripts/linux/backup_miniflux_db.sh
+Restart=on-failure
+RestartSec=10s
+
+[Install]
+WantedBy=default.target
