@@ -5,12 +5,12 @@ command = "meld"
 args = ["{{ `{{ .Destination }}` }}", "{{ `{{ .Source }}` }}", "{{ `{{ .Target }}` }}"]
 [data]
 username = "{{ promptStringOnce . "username" "What is your desktop username" }}"
-fullname = "{{ promptStringOnce . "fullname" "What is your full name" }}"
-email = "{{ promptStringOnce . "email" "What is your email" }}"
-desktopHostname = "{{ promptStringOnce . "desktopHostname" "What is the desktop hostname" }}"
+fullname = "{{ onepasswordRead "op://Personal/Eu/Identification/full name" }}"
+email = "{{ onepasswordRead "op://Personal/Eu/Internet Details/email" }}"
+desktopHostname = "{{ onepasswordRead "op://Personal/Desktop/hostname" }}"
 workComputer = false
 emacsPath = "/usr/local/bin/emacs"
 emacsClientPath = "/usr/local/bin/emacsclient"
 systemdSvcBackupUser = "{{ promptStringOnce . "systemdSvcBackupUser" "What is the service backup user" }}"
-systemdSvcBackupHost = "{{ promptStringOnce . "systemdSvcBackupHost" "What is the service backup host" }}"
-giteaHostname = "{{ promptStringOnce . "giteaHostname" "What is the Gitea hostname" }}"
+systemdSvcBackupHost = "chaves"
+giteaHostname = "chaves"
