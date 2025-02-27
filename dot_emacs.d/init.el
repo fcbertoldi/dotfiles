@@ -98,6 +98,8 @@
   (setq backup-directory-alist `(("." . ,(concat (file-name-as-directory user-emacs-directory)
                                                  "backups")))))
 
+(setq tramp-auto-save-directory (concat (file-name-as-directory user-emacs-directory)
+                                        "backups"))
 
 ;; Copy/paste
 (cua-mode t)
