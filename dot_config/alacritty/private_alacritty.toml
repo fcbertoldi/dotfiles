@@ -1,6 +1,3 @@
-import = [
-    "~/.config/alacritty/current-theme.toml", # symlink to a theme file:  https://github.com/alacritty/alacritty-theme
-]
 
 [font.bold]
 family = "monospace"
@@ -21,3 +18,8 @@ family = "monospace"
 decorations = "none"
 startup_mode = "Maximized"
 padding.y = 1
+
+[general]
+import = [
+    "~/.config/alacritty/current-theme.toml", # symlink to a theme file:  https://github.com/alacritty/alacritty-theme
+]
