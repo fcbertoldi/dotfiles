@@ -182,18 +182,11 @@ command -v pew &> /dev/null && source $(pew shell_config)
 command -v fzf &> /dev/null && eval "$(fzf --bash)"
 
 
-command -v kubectl &> /dev/null && source <(kubectl completion bash)
-
-
 #ASDF
-if [ -d "$HOME/.asdf" ]; then
-    . "$HOME/.asdf/asdf.sh"
-    . "$HOME/.asdf/completions/asdf.bash"
-fi
+export ASDF_DATA_DIR=/home/fernando/.asdf
+export PATH="$ASDF_DATA_DIR/shims:$PATH"
+source <(asdf completion bash)
 
 
 command -v direnv &> /dev/null && eval "$(direnv hook bash)"
 
-
-# If Vagrant is installed, use libvirt as the default provider
-command -v vagrant &> /dev/null && export VAGRANT_DEFAULT_PROVIDER=libvirt
