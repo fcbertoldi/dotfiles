@@ -183,10 +183,11 @@ command -v fzf &> /dev/null && eval "$(fzf --bash)"
 
 
 #ASDF
-export ASDF_DATA_DIR=/home/fernando/.asdf
-export PATH="$ASDF_DATA_DIR/shims:$PATH"
-source <(asdf completion bash)
-
+if command -v asdf &> /dev/null; then
+   export ASDF_DATA_DIR="$HOME/.asdf"
+   export PATH="$ASDF_DATA_DIR/shims:$PATH"
+   source <(asdf completion bash)
+fi
 
 command -v direnv &> /dev/null && eval "$(direnv hook bash)"
 
