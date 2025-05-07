@@ -324,7 +324,10 @@
   typo
   :ensure t
   :hook (text-mode . typo-mode)
-  :init (typo-global-mode 1))
+  :init (typo-global-mode 1)
+  :config
+  (add-hook 'org-mode-hook (lambda () (typo-mode -1))))
+
 
 (use-package
   editorconfig
