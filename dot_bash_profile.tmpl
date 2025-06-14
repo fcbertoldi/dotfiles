@@ -30,12 +30,6 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-# vcpkg
-export VCPKG_ROOT="$HOME/src/third-party/vcpkg"
-if [ -d "$VCPKG_ROOT" ]; then
-   export PATH="$VCPKG_ROOT:$PATH"
-fi
-
 if command -v stow &> /dev/null && [ -d "$STOW_USER_TARGET_DIR" ]; then
     PATH="$STOW_USER_TARGET_DIR:$PATH"
 fi
