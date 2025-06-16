@@ -187,6 +187,12 @@ if [ -d "$VCPKG_ROOT" ]; then
    export PATH="$VCPKG_ROOT:$PATH"
 fi
 
+
+{{ if eq .chezmoi.hostname "fernando-laptop" }}
+# CMake
+export PATH="/opt/cmake/bin:$PATH"
+{{ end }}
+
 #ASDF
 if command -v asdf &> /dev/null; then
    export ASDF_DATA_DIR="$HOME/.asdf"
